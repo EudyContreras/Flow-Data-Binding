@@ -28,6 +28,9 @@ class Network(
         )
     }
 
+    /**
+     * StateFlow request that implements a simple retry logic using semaphores
+     */
     override fun getDataFlow(
         request: DemoRequest
     ): StateFlow<Resource<DemoResponse>> {

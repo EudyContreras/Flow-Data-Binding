@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
+import com.eudycontreras.databindingexample.databinding.ActivityMainBinding
 import com.eudycontreras.databindingexample.viewmodels.DemoViewModel
 import com.eudycontreras.databindingexample.viewmodels.DemoViewModelSimple1
 import com.eudycontreras.databindingexample.viewmodels.DemoViewModelSimple2
@@ -19,11 +19,11 @@ internal class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_main).apply {
+        DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main).apply {
             lifecycleOwner = this@MainActivity
-            setVariable(BR.viewModel, demoViewModel)
-            setVariable(BR.simpleVM1, demoViewModelSimple1)
-            setVariable(BR.simpleVM2, demoViewModelSimple2)
+            viewModel = demoViewModel
+            simpleVM1 = demoViewModelSimple1
+            simpleVM2 = demoViewModelSimple2
         }
     }
 }
