@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.eudycontreras.databindingexample.viewmodels.DemoViewModel" />
+
+        <variable
+            name="simpleVM1"
+            type="com.eudycontreras.databindingexample.viewmodels.DemoViewModelSimple1" />
+
+        <variable
+            name="simpleVM2"
+            type="com.eudycontreras.databindingexample.viewmodels.DemoViewModelSimple2" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        app:state="@{viewModel.uiState}"
+        app:stateBindings="@{viewModel.stateBinding}" />
+</layout>
