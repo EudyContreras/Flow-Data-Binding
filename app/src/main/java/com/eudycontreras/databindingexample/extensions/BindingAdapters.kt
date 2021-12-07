@@ -1,4 +1,4 @@
-package com.eudycontreras.databindingexample
+package com.eudycontreras.databindingexample.extensions
 
 import android.graphics.drawable.Drawable
 import android.view.Gravity
@@ -11,8 +11,14 @@ import androidx.annotation.StringRes
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.eudycontreras.databindingexample.BR
+import com.eudycontreras.databindingexample.ItemBinding
+import com.eudycontreras.databindingexample.adapters.ItemBindingAdapter
+import com.eudycontreras.databindingexample.adapters.ItemBindingAdapterMutable
 import com.eudycontreras.databindingexample.helpers.UIState
+import com.eudycontreras.databindingexample.helpers.diffing.DiffComparable
 
 @BindingAdapter(value = ["android:layout_width", "android:layout_height"], requireAll = true)
 fun ProgressBar.size(width: Float, height: Float) {
@@ -33,6 +39,37 @@ fun ImageView.loadImage(imageUrl: String?, placeholder: Drawable) {
         .fallback(placeholder)
         .placeholder(placeholder)
         .into(this)
+}
+
+/**
+ * Example for a Binding Collection Adapter
+ */
+@Suppress("UNCHECKED_CAST")
+@BindingAdapter(value = ["items", "itemBinding"], requireAll = true)
+fun <T : DiffComparable> RecyclerView.setItemData(
+    items: List<T>,
+    itemBinding: ItemBinding<T>
+) {
+    if (adapter == null) {
+        adapter = ItemBindingAdapterMutable(items, itemBinding)
+        return
+    }
+    with(adapter as ItemBindingAdapterMutable<T>) {
+        updateData(items)
+    }
+}
+
+/**
+ * Example for a Binding Collection Adapter
+ */
+@Suppress("UNCHECKED_CAST")
+@BindingAdapter(value = ["adapter"], requireAll = true)
+fun <T : DiffComparable> RecyclerView.setItemData(
+    bindingAdapter: ItemBindingAdapter<T>
+) {
+    if (adapter == null) {
+        adapter = bindingAdapter
+    }
 }
 
 /**

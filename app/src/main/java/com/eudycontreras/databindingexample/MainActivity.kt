@@ -5,7 +5,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.eudycontreras.databindingexample.databinding.ActivityMainBinding
+import com.eudycontreras.databindingexample.viewmodels.*
 import com.eudycontreras.databindingexample.viewmodels.DemoViewModel
+import com.eudycontreras.databindingexample.viewmodels.DemoViewModelCollection
 import com.eudycontreras.databindingexample.viewmodels.DemoViewModelSimple1
 import com.eudycontreras.databindingexample.viewmodels.DemoViewModelSimple2
 
@@ -16,6 +18,7 @@ internal class MainActivity : AppCompatActivity() {
     private val demoViewModel: DemoViewModel by viewModels()
     private val demoViewModelSimple1: DemoViewModelSimple1 by viewModels()
     private val demoViewModelSimple2: DemoViewModelSimple2 by viewModels()
+    private val collectionViewModel: DemoViewModelCollection by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,7 @@ internal class MainActivity : AppCompatActivity() {
             viewModel = demoViewModel
             simpleVM1 = demoViewModelSimple1
             simpleVM2 = demoViewModelSimple2
+            collectionVM = collectionViewModel
         }
     }
 }

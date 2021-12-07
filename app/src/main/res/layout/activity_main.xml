@@ -11,6 +11,10 @@
             type="com.eudycontreras.databindingexample.viewmodels.DemoViewModel" />
 
         <variable
+            name="collectionVM"
+            type="com.eudycontreras.databindingexample.viewmodels.DemoViewModelCollection" />
+
+        <variable
             name="simpleVM1"
             type="com.eudycontreras.databindingexample.viewmodels.DemoViewModelSimple1" />
 
@@ -20,12 +24,26 @@
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
-        android:foregroundGravity="center"
-        android:gravity="center"
-        app:state="@{viewModel.uiState}"
-        app:stateBindings="@{viewModel.stateBinding}" />
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            app:state="@{viewModel.uiState}"
+            app:stateBindings="@{viewModel.stateBinding}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            app:items="@{collectionVM.items}"
+            app:itemBinding="@{collectionVM.itemBinding}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/layout_item_a" />
+    </LinearLayout>
 </layout>

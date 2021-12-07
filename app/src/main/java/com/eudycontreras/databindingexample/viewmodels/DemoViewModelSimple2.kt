@@ -9,9 +9,6 @@ import com.eudycontreras.databindingexample.datamodels.DemoRequest
 import com.eudycontreras.databindingexample.extensions.stateMap
 import kotlinx.coroutines.flow.StateFlow
 
-/**
- * Example with StateFlow
- */
 internal class DemoViewModelSimple2 : ViewModel() {
 
     /**

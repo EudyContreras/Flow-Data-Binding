@@ -10,9 +10,6 @@ import com.eudycontreras.databindingexample.datamodels.DemoData
 import com.eudycontreras.databindingexample.datamodels.DemoRequest
 import kotlinx.coroutines.flow.map
 
-/**
- * Example with LiveData
- */
 internal class DemoViewModelSimple1 : ViewModel() {
 
     /**
