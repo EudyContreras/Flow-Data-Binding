@@ -13,11 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
-
-gradle/wrapper/
-
-gradlew.bat
-
-gradlew
-
+gradle/wrapper/gradle-wrapper.jar
 .idea/
